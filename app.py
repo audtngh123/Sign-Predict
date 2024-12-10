@@ -22,15 +22,15 @@ def preprocess_image(img):
     return img_array
 
 # Streamlit 앱 구성
-st.title("Traffic Sign Classification")
-st.write("Upload an image to classify the traffic sign.")
+st.title("교통 표지판 분류")
+st.write("이미지를 업로드하면 교통 표지판을 분류합니다!")
 
 uploaded_file = st.file_uploader("Choose an image...", type=["jpg", "png", "jpeg"])
 
 if uploaded_file is not None:
     # 이미지 로드
     img = Image.open(uploaded_file)
-    st.image(img, caption="Uploaded Image", use_column_width=True)
+    st.image(img, caption="업로드된 이미지", use_column_width=True)
 
     # 이미지 전처리
     img_array = preprocess_image(img)
@@ -45,11 +45,12 @@ if uploaded_file is not None:
 
     # 결과 출력
     confidence = np.max(prediction) * 100  # 확률을 백분율로 표시
-    st.write(f"**Prediction:** {predicted_class}")
-    st.write(f"**Confidence:** {confidence:.2f}%")
+    st.write(f"**예측 결과:** {predicted_class}")
+    st.write(f"**정확도:** {confidence:.2f}%")
 
     # 예측 확률 그래프 (4번째 클래스는 제외)
     prediction = prediction[:3]  # 4번째 클래스 제외
+    colors = ['red' if i == predicted_class_index else 'skyblue' for i in range(len(prediction))]  # 가장 높은 확률의 색을 빨간색으로 설정
     fig, ax = plt.subplots()
     ax.bar(class_labels, prediction, color='skyblue')
     ax.set_xlabel('Traffic Sign Class')
