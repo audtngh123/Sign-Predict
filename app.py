@@ -51,11 +51,12 @@ if uploaded_file is not None:
     # 예측 확률 그래프 (4번째 클래스는 제외)
     prediction = prediction[:3]  # 4번째 클래스 제외
     colors = ['red' if i == predicted_class_index else 'skyblue' for i in range(len(prediction))]  # 가장 높은 확률의 색을 빨간색으로 설정
+
     fig, ax = plt.subplots()
-    ax.bar(class_labels, prediction, color='skyblue')
-    ax.set_xlabel('Traffic Sign Class')
-    ax.set_ylabel('Prediction Confidence')
-    ax.set_title(f'Prediction Confidence for {predicted_class}')
+    ax.bar(class_labels, prediction, color=colors)
+    ax.set_xlabel('교통 표지판 종류')
+    ax.set_ylabel('예측 확률')
+    ax.set_title(f'예측 확률 ({predicted_class})')
     ax.set_ylim(0, 1)
 
     st.pyplot(fig)
