@@ -10,7 +10,7 @@ import io
 # 모델 로드
 model = load_model('model.h5')
 # 클래스 라벨 정의
-class_labels = ['stop', 'left', 'right']  # 4번째 클래스는 제외
+class_labels = ['정지', '왼쪽', '오른쪽']  # 4번째 클래스는 제외
 
 # 이미지 전처리 함수
 def preprocess_image(img):
