@@ -4,11 +4,13 @@ from tensorflow.keras.preprocessing import image
 import numpy as np
 from PIL import Image
 import matplotlib.pyplot as plt
+from matplotlib import font_manager
 import io
 
 # 모델 로드
 model = load_model('model.h5')
-plt.rc('font', family='ngilim')
+mpl.rcParams['font.family'] = 'NewGilim'
+#mpl.rc('axes', unicode_minus=False)
 # 클래스 라벨 정의
 class_labels = ['stop', 'left', 'right']  # 4번째 클래스는 제외
 
