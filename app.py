@@ -4,6 +4,7 @@ from tensorflow.keras.preprocessing import image
 import numpy as np
 from PIL import Image
 import matplotlib.pyplot as plt
+import koreanize_matplotlib
 import io
 
 # 모델 로드
